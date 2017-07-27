@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import <Masonry.h>
 @interface ViewController ()
 
 @end
@@ -17,8 +17,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    
+    __weak typeof(self)weakSelf = self;
+    UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    button.backgroundColor = [UIColor redColor];
+    [self.view addSubview:button];
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.view).offset(200);
+        make.width.equalTo(@100);
+        make.height.equalTo(@60);
+        make.centerX.equalTo(weakSelf.view);
+    }];
 }
 
 
