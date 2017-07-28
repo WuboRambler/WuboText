@@ -10,6 +10,8 @@
 #import <Masonry.h>
 @interface ViewController ()
 
+@property (nonatomic, strong) UIButton *button;
+
 @end
 
 @implementation ViewController
@@ -18,15 +20,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     __weak typeof(self)weakSelf = self;
-    UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    button.backgroundColor = [UIColor redColor];
-    [self.view addSubview:button];
-    [button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.view).offset(200);
-        make.width.equalTo(@100);
-        make.height.equalTo(@60);
-        make.centerX.equalTo(weakSelf.view);
-    }];
+    
+    self.button = ({
+        UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        [self.view addSubview:button];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(weakSelf.view).offset(200);
+            make.width.equalTo(@100);
+            make.height.equalTo(@60);
+            make.centerX.equalTo(weakSelf.view);
+        }];
+        button;
+    });
+    
 }
 
 
