@@ -32,6 +32,11 @@
         }];
         button;
     });
+    [self createUI];
+}
+
+- (void)createUI
+{
     
 }
 
